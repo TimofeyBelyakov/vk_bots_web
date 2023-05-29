@@ -1,0 +1,23 @@
+{% extends "main/base.html" %}
+
+{% block info%}
+    <a href="https://vk.com/id{{ user_id }}"><img src="{{ photo }}" alt=""></a>
+    <div class="info-text">
+        {% if message != 'error' %}
+            <h5>{{ name }}</h5> <br>
+            ID пользователя: {{ user_id }} <br>
+        <!--                    {{ features }} <br>-->
+            {% if message == 'success' %}
+                {{ prediction }}
+            {% elif message == 'closed' %}
+                {{ 'Страница пользователя закрыта' }}
+            {% elif message == 'banned' %}
+                {{ 'Страница пользователя заблокирована' }}
+            {% elif message == 'deleted' %}
+                {{ 'Страница пользователя удалена' }}
+            {% endif %}
+        {% else %}
+            {{ 'Ошибка! Что-то пошло не так' }}
+        {% endif %}
+    </div>
+{% endblock %}
